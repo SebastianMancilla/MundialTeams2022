@@ -1,6 +1,7 @@
 package com.smg.mundialteams.service;
 
 import com.smg.mundialteams.domain.Player;
+import com.smg.mundialteams.exeptions.NoContent;
 import com.smg.mundialteams.repository.PlayerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,9 @@ public class PlayerServiceImp   {
 
 
     public List<Player> findAll() {
-        return playerRepository.findAll();
+        List<Player> players = playerRepository.findAll();
+        if(players.isEmpty())throw new NoContent("Sin Contenido");
+        return players;
     }
 
 

@@ -15,7 +15,7 @@ public class RestController4Player {
 
     private final PlayerServiceImp playerServiceImp;
 
-    @GetMapping(path = "/all")
+    @GetMapping(path = "/")
     public ResponseEntity<List<Player>> getAllPlayers(){
         List<Player> players = this.playerServiceImp.findAll();
         if(players.isEmpty()){

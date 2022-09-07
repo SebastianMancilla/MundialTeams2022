@@ -19,9 +19,8 @@ public class RestController4Team {
     private static final Logger log = LoggerFactory.getLogger(RestController4Team.class);
     private final TeamServiceImp teamServiceImp;
 
-    @GetMapping(path = "/all")
+    @GetMapping(path = "/")
     public ResponseEntity<List<Team>> getAllTeams() {
-        log.debug("Todo Ok");
         return new ResponseEntity<>(teamServiceImp.findAll(), HttpStatus.OK);
     }
 
