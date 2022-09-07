@@ -5,7 +5,6 @@ import lombok.*;
 import org.springframework.beans.BeanUtils;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
@@ -24,8 +23,10 @@ public class Team implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
+    @NonNull
     private String name;
 
+    @NonNull
     private String country;
 
     @OneToMany(mappedBy = "team")

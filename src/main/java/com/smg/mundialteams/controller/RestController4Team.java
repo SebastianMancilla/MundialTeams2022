@@ -31,33 +31,24 @@ public class RestController4Team {
 
     @PostMapping(path = "/")
     public ResponseEntity<Team> createNewTeam(@RequestBody TeamDTO body) {
-        if (body.country == null) {
-            //TODO: Crear para BADREQUEST
-            log.debug("No Kaifuku");
-        }
-        return new ResponseEntity<>(this.teamServiceImp.save(body), HttpStatus.CREATED);
+        return new ResponseEntity<>(teamServiceImp.save(body), HttpStatus.CREATED);
     }
 
     @PutMapping(path = "/put/{id}")
     public ResponseEntity<Team> putTeam(@RequestBody TeamDTO teamDTO, @PathVariable Long id) {
         Team teamActual = teamServiceImp.findById(id);
-        if (teamActual == null) {
-            log.debug("No se ha encontrado");
-            return new ResponseEntity<>(this.teamServiceImp.findById(id), HttpStatus.NO_CONTENT);
-        }
         try {
             teamActual.setName(teamDTO.getName());
             teamActual.setCountry(teamDTO.getCountry());
         } catch (Exception ex) {
             log.debug(ex.getMessage());
         }
-        return new ResponseEntity<>(this.teamServiceImp.save(teamActual), HttpStatus.CREATED);
+        return new ResponseEntity<>(teamServiceImp.save(teamActual), HttpStatus.CREATED);
     }
 
     @DeleteMapping(path = "/delete/{id}")
     public ResponseEntity<Team> deleteTeam(@PathVariable Long id) {
-        this.teamServiceImp.delete(id);
-        return new ResponseEntity<>(this.teamServiceImp.findById(id), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(teamServiceImp.findById(id), HttpStatus.NO_CONTENT);
     }
 
 
