@@ -2,6 +2,7 @@ package com.smg.mundialteams.domain;
 
 import com.smg.mundialteams.dto.TeamDTO;
 import lombok.*;
+import net.bytebuddy.utility.nullability.NeverNull;
 import org.springframework.beans.BeanUtils;
 
 import javax.persistence.*;
@@ -23,10 +24,10 @@ public class Team implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
-    @NonNull
+    @NeverNull
     private String name;
 
-    @NonNull
+    @NeverNull
     private String country;
 
     @OneToMany(mappedBy = "team")
