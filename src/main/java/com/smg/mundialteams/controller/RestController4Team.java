@@ -29,7 +29,7 @@ public class RestController4Team {
     public ResponseEntity<Team> createNewTeam(@RequestBody TeamDTO body) {
         return new ResponseEntity<>(teamServiceImp.save(body), HttpStatus.CREATED);
     }
-    @PostMapping(path = "/")
+    @PostMapping(path = "/list/")
     public ResponseEntity<List<Team>> createNewTeams(@RequestBody List<Team> teams){
         return  new ResponseEntity<>(teamServiceImp.saveAll(teams), HttpStatus.CREATED);
     }
