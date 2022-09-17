@@ -26,13 +26,14 @@ public class Player implements Serializable {
 
     private String country;
 
-    @Getter(value = AccessLevel.NONE)
-    @Setter(value = AccessLevel.NONE)
+    @Getter(AccessLevel.NONE)
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
 
     public Player(PlayerDTO playerDTO) {
-        BeanUtils.copyProperties(playerDTO, this);
+        this.setName(playerDTO.getName());
+        this.setCountry(playerDTO.getCountry());
+        this.setTeam(playerDTO.getTeam());
     }
 }

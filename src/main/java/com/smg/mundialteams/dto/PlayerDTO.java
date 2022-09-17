@@ -1,22 +1,23 @@
 package com.smg.mundialteams.dto;
 
-import com.smg.mundialteams.domain.Player;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.smg.mundialteams.domain.Team;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class PlayerDTO {
-    public Long id;
-    public String name;
-    public String country;
+    private Long id;
+    private String name;
+    private String country;
+    private Team team;
 
-    public PlayerDTO (Player player){
-        this.setId(player.getId());
-        this.setName(player.getName());
-        this.setCountry(player.getCountry());
-
+    @JsonProperty("team")
+    private void unpackNested(Long team2) {
+        this.team = new Team();
+        team.setId(team2);
     }
+
 }

@@ -37,7 +37,7 @@ public class PlayerServiceImp   {
         playerDTO.setId(player.get().getId());
         playerDTO.setName(player.get().getName());
         playerDTO.setCountry(player.get().getCountry());
-
+//        playerDTO.setTeam(player.get().getTeam().getId());
 
         return playerDTO;
     }
